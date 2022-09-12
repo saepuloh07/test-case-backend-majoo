@@ -47,7 +47,7 @@ func FillDataReportByMerchants(req models.ReportMerchantsRequest, data []models.
 
 	merchant, _ := GetMerchantByUserId(userId)
 
-	allDate := utils.GetAllDate(req.FromDate, req.ToDate)
+	allDate := utils.GetAllDate(req.FromDate, req.ToDate, req.Skip, req.Take)
 	for i, x := range allDate {
 		result = append(result, models.ReportMerchantsDetail{
 			Tanggal:      x,
@@ -105,7 +105,7 @@ func FillDataReportByOutlets(req models.ReportOutletsRequest, data []models.Repo
 
 	outlets, _ := GetOutletByUserId(userId)
 
-	allDate := utils.GetAllDate(req.FromDate, req.ToDate)
+	allDate := utils.GetAllDate(req.FromDate, req.ToDate, req.Skip, req.Take)
 
 	for _, x := range allDate {
 		for _, y := range outlets {
